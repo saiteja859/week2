@@ -1,0 +1,64 @@
+import pandas as pd
+# Creating a DataFrame from a dictionary
+data = {
+'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+'Age': [25, 30, 35, 40],
+'City': ['New York', 'Los Angeles', 'Chicago', 'Houston']
+}
+df = pd.DataFrame(data)
+# Displaying the DataFrame
+print("Original DataFrame:")
+print(df)
+print()
+# Method 1: Accessing specific columns
+print("1. Accessing 'Name' column:")
+print(df['Name'])
+print()
+# Method 2: Accessing multiple columns
+print("2. Accessing 'Name' and 'Age' columns:")
+print(df[['Name', 'Age']])
+print()
+# Method 3: Adding a new column
+df['Gender'] = ['Female', 'Male', 'Male', 'Female']
+print("3. DataFrame after adding 'Gender' column:")
+print(df)
+print()
+# Method 4: Filtering rows based on a condition
+filtered_df = df[df['Age'] > 30]
+print("4. Filtered DataFrame (Age > 30):")
+print(filtered_df)
+print()
+# Method 5: Grouping and aggregating data
+grouped_df = df.groupby('City').agg({'Age': 'mean'})
+print("5. Grouped DataFrame (mean age by city):")
+print(grouped_df)
+print()
+# Method 6: Sorting DataFrame by values
+sorted_df = df.sort_values(by='Age', ascending=False)
+print("6. DataFrame sorted by Age (descending):")
+print(sorted_df)
+print()
+# Method 7: Counting occurrences of each value in a column
+count_df = df['City'].value_counts()
+print("7. Count of occurrences of each City:")
+print(count_df)
+print()
+# Method 8: Dropping columns
+df_dropped = df.drop(columns=['Gender'])
+print("8. DataFrame after dropping 'Gender' column:")
+print(df_dropped)
+print()
+# Method 9: Merging DataFrames
+data2 = {
+'City': ['New York', 'Los Angeles', 'Chicago', 'Houston'],
+'Population': [8623000, 3990456, 2705994, 2320268]
+}
+df2 = pd.DataFrame(data2)
+merged_df = pd.merge(df, df2, on='City')
+print("9. Merged DataFrame:")
+print(merged_df)
+print()
+# Method 10: Setting index
+indexed_df = df.set_index('Name')
+print("10. DataFrame with 'Name' as index:")
+print(indexed_df)
